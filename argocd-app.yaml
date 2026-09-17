@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops-demo-staging
+  namespace: argocd              # ArgoCD lives in its own namespace
+  labels:
+    env: staging
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/<YOUR_ORG>/gitops-demo-manifests
+    targetRevision: main
+    path: k8s/staging            # ArgoCD watches this path
+
+  destination:
+    server: https://kubernetes.default.svc   # in-cluster
+    namespace: staging
+
+  syncPolicy:
+    automated:
+      prune: true                # delete resources removed from git
+      selfHeal: true             # revert manual kubectl changes
+    syncOptions:
+      - CreateNamespace=true     # auto-create staging namespace

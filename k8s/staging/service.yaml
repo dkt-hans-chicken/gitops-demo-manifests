@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitops-demo
+  namespace: staging
+  labels:
+    app: gitops-demo
+    env: staging
+spec:
+  selector:
+    app: gitops-demo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP
