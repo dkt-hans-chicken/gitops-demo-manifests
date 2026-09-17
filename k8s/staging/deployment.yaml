@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: gitops-demo
-          image: <DOCKERHUB_USERNAME>/gitops-demo:latest   # CI updates this line
+          image: whgustn28/gitops-demo:latest   # CI updates this line
           ports:
             - containerPort: 8000
           env:

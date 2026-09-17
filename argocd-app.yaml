@@ -9,7 +9,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/<YOUR_ORG>/gitops-demo-manifests
+    repoURL: https://github.com/dkt-hans-chicken/gitops-demo-manifests
     targetRevision: main
     path: k8s/staging            # ArgoCD watches this path
 
